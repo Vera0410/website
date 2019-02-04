@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>Procesos y multiprogramación
+        </title>
+    </head>
+    <body background = "imagenes/fondo.jpg"  text = "#000000" > 
+     <table align = "center" width = 600px> 
+        <tr>
+            <td align = "center"> <img src = "imagenes/buho.jpeg" height="40%" width="30%" alt=""/> </td>
+            <td align = " center"><h1 align = "center"><font color = "black" face = "Cooper Black" ></font> Taller de Sistemas Operativos</h1></td>
+        </tr>
+        </table>
+        
+       <table bgcolor= "#EFEFEF" align = "center" width = "800px" >
+            <tr>
+            <td>
+                <h1 align = "center"> <font color = "Black" face = "Cooper Black">Procesos </font></h1>
+                    <p> El proceso se puede definir como un programa en ejecución y, de una forma un poco más precisa, como la unidad de procesamiento gestionada por el sistema operativo. El sistema operativo mantiene por cada proceso una serie de estructuras de información que permiten identificar las características de éste, así como los recursos que tiene asignados. En esta última categoría entran los descriptores de los segmentos de memoria asignados, los descriptores de los archivos abiertos, los descriptores de los puertos de comunicaciones, etc.  
+        </p>
+        <center> <img src = "imagenes/proceso.png" heigth = "60%" width="50%" alt = ""/></center>
+                <p>Una parte muy importante de estas informaciones se encuentra en el llamado bloque de control del proceso (BCP). El sistema operativo mantiene una tabla de procesos con todos los BCP de los procesos. Por razones de eficiencia, la tabla de procesos se construye normalmente como una estructura estática, que tiene un determinado número de BCP, todos ellos del mismo tamaño. El contenido del BCP se analizará con más detalle en secciones posteriores; sin embargo, se puede decir que la información que compone un proceso es la siguiente: 
+                </p>
+                <ul>
+                    <li>Contenido de los segmentos de memoria en los que residen el código y los datos del proceso. A esta información se le denomina imagen de memoria o Core image.</li>
+                    <li>Contenido de los registros del modelo de programación.</li>
+                    <li>Contenido del BCP.</li>
+                </ul>
+                <h3 align = "center"> <font color = "Black" face = "Cooper Black">Estados de procesos </font></h3>
+                <ul>
+                    <li><b>Nuevo:</b> Se solicitó al sistema operativo la creación de un proceso, y sus recursos y estructuras están siendo creadas.</li><br />
+                    <li><b>Listo:</b> Está listo para iniciar o continuar su ejecución, pero el sistema no le ha asignado un procesador.</li><br />
+                    <li><b>En ejecución.</b> El proceso está siendo ejecutado en este momento. Sus instrucciones están siendo procesadas en algún procesador</li><br />
+                    <li><b>Bloqueado.</b> En espera de algún evento para poder continuar su ejecución (aun si hubiera un procesador disponible, no podría avanzar).</li><br />
+                    <li><b>Terminado.</b> El proceso terminó de ejecutarse; sus estructuras están a la espera de ser limpiadas por el sistema operativo. </li><br />
+                </ul>
+                </td>
+            </tr>
+            <tr> 
+                <td>
+                     <h1 align = "center"> <font color = "Black" face = "Cooper Black">Multiprogramación </font></h1>
+                <center><img src = "imagenes/1.png" heigth = "70%" width = "60%" alt = "" /></center>
+                    <p>La multiprogramación se refiere a poder cargar múltiples programas dentro de un mismo computador para que sean ejecutados en un determinado momento. Para lograr esto, es necesario definir que compone a un programa.
+                        <br />
+                        En general, se puede decir que un programa está compuesto por dos partes: su representación en memoria que incluye el código, datos y stack del programa, y su estado de ejecución que incluye los valores almacenados en los registros de la CPU, que indican el estado actual del programa en la máquina. Para lograr trabajar con múltiples programas, entonces, es necesario permitir el manejo de múltiples representaciones en memoria y de múltiples estados de ejecución.
+                    </p>
+                    <p>
+                        Se denomina multiprogramación a la técnica que permite que dos o más procesos ocupen la misma unidad de memoria principal y que sean ejecutados al mismo tiempo en la unidad central de proceso o CPU.<br/>
+                        En un sistema multiprogramado o de tiempo compartido, un proceso es la imagen en memoria de un programa, junto con la información relacionada con el estado de su ejecución. Un programa es una entidad pasiva, una lista de instrucciones; un proceso es una entidad activa
+                    </p>
+                    <center> <img src = "imagenes/2.png" heigth = "60%" width="50%" alt = ""/></center>
+                    <h3 align = "center"> <font color = "Black" face = "Cooper Black"> Método </font></h3>
+                    <p>
+                        Un método para la multiprogramación es el Foreground/Background dicho de otra forma ejecución jerarquizada, en él hay un proceso prioritario (el Foreground (FG)) que se ejecuta con preferencia de todos los demás, cuando este proceso solicita una operación L/E(Lectura/Escritura), mientras el Sistema Operativo. la realiza, el proceso FG estará bloqueado por esta operación y le cede el control al proceso Background 1 (BG), y si éste realiza una operación L/E, al BG2, así sucesivamente. 
+                    </p>
+                      <center> <img src = "imagenes/3.jpg" heigth = "80%" width="70%" alt = ""/></center>
+                </td>
+            </tr>
+           <tr>
+               <td>
+                    <h3 align = "center"> <font color = "Black" face = "Cooper Black">Tipos de sistemas operativos de multiprogramación </font></h3>
+                  <ul>
+                      <li>
+                          <b>Sistemas de tiempo compartido</b>
+
+                      </li>
+                   </ul>
+                   <p>
+                       El tiempo compartido es bastante popular en sistemas multiprogramados y multiusuarios. Estos sistemas de multiacceso dedican la mayor parte del tiempo de ejecución de un programa único de una gran aplicación. Son elementos dedicados que poseen un buen tiempo de respuesta del terminal y tratan con frecuencia de proporcionar un reparto equitativo del los recursos comunes para dar la ilusión a cada usuario de poseer la máquina para el mismo. Por ejemplo, cuando se carga el sistema, se hace esperar más a los usuarios con más requerimientos de proceso pedido.
+                   </p>
+
+                   <p>El algoritmo empleado en el despacho de las actividades es único de la filosofía de estos sistemas. El mismo consiste en la ejecución de los programas con prioridad rotatoria que se incrementa con las esperas y cae después de que se dispensó el servicio. El sistema operativo interrumpe un programa y lo pone al final de la cola de programas en espera, cuando es más largo que la fracción de tiempo definida por el sistema, para prevenir a los programas de la monopolización del procesador.
+                   </p>
+                   <ul>
+                      <li>
+                          <b>Sistemas de tiempo real</b>
+                      </li>
+                   </ul>
+                   <p>
+                       Se usan en entornos donde se deben aceptar y procesar en tiempo breve y sin tiempos muertos un gran número de sucesos, en su mayoría externos al sistema de computadora. Son asuntos secundarios la conveniencia del usuario y la utilización de recursos.
+                   </p>
+                   <p>
+                       Estos sistemas se caracterizan principalmente por encargarse de procesos que se activan al ocurrir el suceso relacionado, señalado frecuentemente por una interrupción. Se consigue el multiproceso planificando los procesos independientes unos de otros. Se asigna a cada proceso un cierto nivel de prioridad que corresponde a la importancia relativa de los sucesos que sirve. El procesador está normalmente asignado al proceso con más alta prioridad entre los que están listos para ejecutarse. Esta forma de planificación se llama planificación basada en la prioridad preferente.
+                   </p>
+                   <p>
+                       A diferencia de los sistemas de tiempo compartido, el gestor de memoria está diseñado para tener un menor tiempo de respuesta debido a que los programas generalmente residen permanentemente en la memoria ya que usualmente son sistemas estáticos no diseñados para permitir la implementación de programas externos.
+                   </p>
+               </td>
+           </tr>
+           </table>
+        <table align = "center" width = "800px" > 
+            <tr>
+                <td>
+                    <h4 align = "center"> <font color = "Black" face = "Cooper Black">Bibliografia </font></h4><br />
+            
+            <a href = "https://sites.google.com/site/fesaos13/unidad-2-procesos">Sistemas Opertativos. Unidad 2 Procesos</a><br />
+            <a href = "https://www.ecured.cu/Multiprogramaci%C3%B3n"> Multiprogramación</a><br />
+            <a href="https://sites.google.com/site/isctecvilla/home/unidad-1-introduccion-a-los-sistemas-operativos/1-2-procesos-y-multiprogramacion">Procesos y Multiprogramación</a><br />
+            <a href="https://www.ecured.cu/Multiprogramaci%C3%B3n"> Sistemas operativos, multiprogramación</a><br />
+               <h4 align = "center"> <font color = "Black" face = "Cooper Black">Autor: Vera Salazar Violeta Saraí </font></h4><br />
+                </td>
+            </tr>
+            
+        </table>
+    </body>
+</html>
